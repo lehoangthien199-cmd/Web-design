@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EGA Furniture - nội thất hiện đại, ưu đãi Black Friday.">
+  <title>EGA Furniture | Nội thất cho ngôi nhà của bạn</title>
+  <style>
+    :root {
+      --blue: #0e4b8a;
+      --blue-dark: #093661;
+      --orange: #f66b24;
+      --red: #c92828;
+      --ink: #222;
+      --muted: #737373;
+      --paper: #fff;
+      --soft: #f5f7f8;
+      --line: #e9ecef;
+      --shadow: 0 8px 26px rgba(26, 47, 67, .11);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: Arial, Helvetica, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    .shipping-bar { min-height: 30px; display: flex; align-items: center; justify-content: center; padding: 5px 16px; background: #d94b26; color: white; text-align: center; font-size: 12px; font-weight: 700; letter-spacing: .35px; }
+    .site-header { position: relative; z-index: 5; background: white; box-shadow: 0 2px 12px #142c4412; }
+    .header-inner { max-width: 1180px; min-height: 78px; margin: auto; padding: 10px 22px; display: flex; align-items: center; gap: 32px; }
+    .brand { width: 150px; height: 58px; display: flex; flex: 0 0 150px; flex-direction: column; align-items: flex-start; justify-content: center; color: var(--blue); line-height: 1; }
+    .brand-name { font-size: 26px; font-weight: 900; letter-spacing: 3px; }
+    .brand-name::before { content: "⌂"; font-size: 25px; margin-right: 4px; }
+    .brand-sub { margin: 5px 0 0 30px; color: #777; font-size: 8px; font-weight: 700; letter-spacing: 2px; }
+    .main-nav { display: flex; align-items: center; justify-content: center; gap: clamp(14px, 2vw, 28px); flex: 1; height: 100%; }
+    .main-nav a { padding: 12px 5px; border-radius: 4px; font-size: 13px; font-weight: 700; white-space: nowrap; transition: color .2s, background .2s; }
+    .main-nav a:hover, .main-nav a:focus-visible { color: white; background: #0e4b8a; outline: none; }
+    .header-actions { display: flex; align-items: center; gap: 14px; }
+    .icon-button { width: 34px; height: 36px; position: relative; display: grid; place-items: center; border: 0; background: transparent; color: #29323b; cursor: pointer; }
+    .icon-button svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .cart-count { position: absolute; top: -1px; right: -3px; width: 16px; height: 16px; display: grid; place-items: center; border-radius: 50%; color: white; background: var(--orange); font-size: 10px; font-weight: 700; }
+    .search-form { display: flex; height: 34px; overflow: hidden; border: 1px solid #dce2e8; border-radius: 18px; }
+    .search-form input { width: 105px; min-width: 0; padding: 0 10px; border: 0; outline: 0; font-size: 10px; }
+    .search-form button { width: 35px; display: grid; place-items: center; border: 0; color: white; background: var(--blue); cursor: pointer; }
+    .search-form svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+    .hero { max-width: 1180px; min-height: 330px; position: relative; display: flex; align-items: center; margin: 18px auto 0; overflow: hidden; border-radius: 3px; isolation: isolate; background: #dfd0b4; }
+    .hero::before { content: ""; position: absolute; z-index: -2; inset: 0; background: url("https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1800&q=85") center 54% / cover; }
+    .hero::after { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(255,248,230,.97) 0%, rgba(255,246,225,.90) 31%, rgba(255,246,225,.35) 53%, rgba(20,16,12,.08) 100%); }
+    .hero-copy { max-width: 510px; padding: 36px 44px; }
+    .hero h1 { margin: 0; color: #f16632; font-size: clamp(42px, 6vw, 68px); line-height: .98; font-weight: 900; letter-spacing: -2px; }
+    .hero-pill { display: inline-block; margin: 14px 0 8px; padding: 8px 15px; border-radius: 20px; color: white; background: #784b36; font-size: 14px; font-weight: 700; }
+    .hero-copy p { margin: 4px 0 20px; font-size: 16px; font-weight: 700; }
+    .cta { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; padding: 0 24px; border: 2px solid var(--orange); border-radius: 4px; color: white; background: var(--orange); font-weight: 800; transition: color .2s, background .2s, transform .2s; }
+    .cta:hover { color: var(--orange); background: white; transform: translateY(-2px); }
+    .hero-badge { position: absolute; top: 23%; right: 37%; width: 76px; height: 76px; display: grid; place-items: center; color: #fff; background: #604234; font-size: 19px; font-weight: 900; letter-spacing: 1px; transform: rotate(-4deg); }
+    .section { max-width: 1180px; margin: 0 auto; padding: 42px 22px; }
+    .section-title { margin: 0 0 25px; text-align: center; color: var(--blue); font-size: 22px; font-weight: 800; text-transform: uppercase; }
+    .category-list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 22px; }
+    .category { min-width: 0; text-align: center; }
+    .category-image { width: min(100%, 124px); aspect-ratio: 1; margin: 0 auto 12px; overflow: hidden; border-radius: 50%; background: #ece8e1; box-shadow: 0 3px 12px #18283a18; }
+    .category-image img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .25s ease; }
+    .category:hover img { transform: scale(1.1); }
+    .category a { font-size: 14px; font-weight: 700; }
+    .category a:hover { color: var(--orange); }
+    .products-section { max-width: none; padding: 44px 22px 56px; background: var(--soft); }
+    .products-inner { max-width: 1180px; margin: auto; }
+    .products-section .section-title { color: var(--red); }
+    .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; align-items: stretch; }
+    .product-card { min-width: 0; display: flex; flex-direction: column; overflow: hidden; border: 1px solid #edf0f2; border-radius: 8px; background: white; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 14px 30px #19334d20; }
+    .product-image { position: relative; aspect-ratio: 1 / .82; overflow: hidden; background: #ebe8e2; }
+    .product-image img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .3s; }
+    .product-card:hover .product-image img { transform: scale(1.04); }
+    .sale-label { position: absolute; top: 12px; left: 12px; padding: 6px 9px; border-radius: 3px; color: white; background: var(--orange); font-size: 11px; font-weight: 800; }
+    .product-info { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 16px; }
+    .product-info h3 { margin: 0 0 12px; font-size: 15px; line-height: 1.4; }
+    .product-info .price { margin-top: auto; color: #ff0000; font-size: 17px; font-weight: 800; }
+    .product-info .old-price { margin: 5px 0 0; color: #929292; font-size: 12px; text-decoration: line-through; }
+    .product-info .add-button { margin-top: 13px; padding: 8px 13px; border: 1px solid var(--blue); border-radius: 4px; color: var(--blue); background: white; font-size: 12px; font-weight: 700; cursor: pointer; transition: all .2s; }
+    .product-info .add-button:hover { color: white; background: var(--blue); }
+    .site-footer { color: white; background: var(--blue); }
+    .footer-inner { max-width: 1180px; margin: auto; padding: 42px 22px 28px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px; }
+    .footer-column h2 { margin: 0 0 16px; font-size: 16px; text-transform: uppercase; }
+    .footer-column p, .footer-column a { margin: 0 0 10px; color: #e5edf6; font-size: 13px; line-height: 1.7; }
+    .footer-column a { display: block; }
+    .footer-column a:hover { color: #ffca9b; }
+    .social-links { display: flex; gap: 10px; margin-top: 14px; }
+    .social-links a { width: 40px; height: 40px; display: grid; place-items: center; margin: 0; border: 1px solid #ffffff75; border-radius: 50%; color: white; font-size: 14px; font-weight: 800; }
+    .social-links a:hover { color: var(--blue); background: white; }
+    .copyright { margin-top: 28px; padding-top: 18px; border-top: 1px solid #ffffff38; color: #d8e3ee; text-align: center; font-size: 12px; }
+    .toast { position: fixed; z-index: 9; right: 20px; bottom: 20px; padding: 12px 18px; border-radius: 6px; color: white; background: var(--blue-dark); box-shadow: var(--shadow); opacity: 0; transform: translateY(12px); pointer-events: none; transition: .2s; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      .header-inner { flex-wrap: wrap; gap: 8px 18px; padding: 10px 18px; }
+      .main-nav { order: 3; flex-basis: 100%; justify-content: flex-start; overflow-x: auto; }
+      .header-actions { margin-left: auto; }
+      .hero { margin: 12px 14px 0; min-height: 310px; }
+      .hero-badge { right: 26%; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) {
+      .shipping-bar { font-size: 10px; }
+      .header-inner { gap: 8px; }
+      .brand { width: 124px; flex-basis: 124px; }
+      .brand-name { font-size: 22px; }
+      .search-form { display: none; }
+      .main-nav { gap: 10px; }
+      .main-nav a { font-size: 12px; }
+      .hero { min-height: 390px; align-items: flex-end; margin: 10px 10px 0; }
+      .hero::before { background-position: 62% center; }
+      .hero::after { background: linear-gradient(0deg, rgba(255,248,230,.98) 0%, rgba(255,246,225,.91) 48%, rgba(255,246,225,.1) 100%); }
+      .hero-copy { padding: 28px 22px; }
+      .hero h1 { font-size: 52px; }
+      .hero-badge { top: 12%; right: 9%; width: 62px; height: 62px; font-size: 16px; }
+      .section { padding: 34px 16px; }
+      .section-title { font-size: 19px; }
+      .category-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 12px; }
+      .category-image { width: min(100%, 100px); }
+      .category a { font-size: 12px; }
+      .products-section { padding: 36px 14px 44px; }
+      .product-grid { gap: 12px; }
+      .product-info { padding: 12px; }
+      .product-info h3 { font-size: 13px; }
+      .product-info .price { font-size: 15px; }
+      .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 18px; }
+      .footer-column h2 { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shipping-bar">FREESHIP TOÀN QUỐC CHO ĐƠN HÀNG TỪ 500K</div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#trang-chu" aria-label="EGA Furniture - Trang chủ">
+        <span class="brand-name">EGA</span><span class="brand-sub">FURNITURE</span>
+      </a>
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <a href="#danh-muc">Sản phẩm</a><a href="#danh-muc">Phòng</a><a href="#san-pham-hot">Khuyến mãi</a><a href="#gioi-thieu">Góc cảm hứng</a><a href="#footer">Hệ thống cửa hàng</a>
+      </nav>
+      <div class="header-actions">
+        <form class="search-form" role="search" onsubmit="event.preventDefault(); showToast('Đang tìm kiếm sản phẩm...')">
+          <button type="submit" aria-label="Tìm kiếm"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg></button>
+        </form>
+        <button class="icon-button" aria-label="Tài khoản" onclick="showToast('Chào mừng bạn đến EGA Furniture')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></button>
+        <button class="icon-button" aria-label="Giỏ hàng" onclick="showToast('Bạn có ' + cartCount + ' sản phẩm trong giỏ hàng')"><svg viewBox="0 0 24 24"><path d="M3 3h2l2.2 12.1a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 8H6"></path><circle cx="10" cy="21" r="1"></circle><circle cx="18" cy="21" r="1"></circle></svg><span class="cart-count" id="cart-count">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="trang-chu">
+    <section class="hero" id="gioi-thieu" aria-label="Ưu đãi Black Friday">
+      <div class="hero-copy">
+        <h1>BLACK<br>FRIDAY</h1>
+        <span class="hero-pill">Săn ngay deal nội thất khủng</span>
+        <p>Giảm 50% tất cả sản phẩm</p>
+        <a class="cta" href="#san-pham-hot">MUA NGAY</a>
+      </div>
+      <div class="hero-badge" aria-hidden="true">HOT</div>
+    </section>
+
+    <section class="section" id="danh-muc">
+      <h2 class="section-title">DANH MỤC SẢN PHẨM</h2>
+      <div class="category-list">
+        <article class="category"><a href="#san-pham-hot"><div class="category-image"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80" alt="Sofa phòng khách" loading="lazy"></div>Sofa phòng khách</a></article>
+        <article class="category"><a href="#san-pham-hot"><div class="category-image"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=80" alt="Phòng ngủ" loading="lazy"></div>Phòng ngủ</a></article>
+        <article class="category"><a href="#san-pham-hot"><div class="category-image"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=400&q=80" alt="Bàn làm việc" loading="lazy"></div>Bàn làm việc</a></article>
+        <article class="category"><a href="#san-pham-hot"><div class="category-image"><img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=80" alt="Phòng bếp" loading="lazy"></div>Phòng bếp</a></article>
+        <article class="category"><a href="#san-pham-hot"><div class="category-image"><img src="https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?auto=format&fit=crop&w=400&q=80" alt="Đèn trang trí" loading="lazy"></div>Đèn trang trí</a></article>
+        <article class="category"><a href="#san-pham-hot"><div class="category-image"><img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=400&q=80" alt="Đồ trang trí" loading="lazy"></div>Đồ trang trí</a></article>
+      </div>
+    </section>
+
+    <section class="products-section" id="san-pham-hot">
+      <div class="products-inner">
+        <h2 class="section-title">SẢN PHẨM HOT</h2>
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=85" alt="Sofa vải EGA Sora màu kem" loading="lazy"><span class="sale-label">-20%</span></div>
+            <div class="product-info"><h3>Sofa vải EGA Sora 3 chỗ</h3><span class="price">12.800.000₫</span><span class="old-price">16.000.000₫</span><button class="add-button" onclick="addToCart()">Thêm vào giỏ</button></div>
+          </article>
+          <article class="product-card">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=85" alt="Giường ngủ gỗ sồi EGA Mộc" loading="lazy"><span class="sale-label">-15%</span></div>
+            <div class="product-info"><h3>Giường ngủ gỗ sồi EGA Mộc</h3><span class="price">8.490.000₫</span><span class="old-price">9.990.000₫</span><button class="add-button" onclick="addToCart()">Thêm vào giỏ</button></div>
+          </article>
+          <article class="product-card">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=85" alt="Bàn làm việc tối giản EGA Work" loading="lazy"><span class="sale-label">-25%</span></div>
+            <div class="product-info"><h3>Bàn làm việc tối giản EGA Work</h3><span class="price">3.750.000₫</span><span class="old-price">5.000.000₫</span><button class="add-button" onclick="addToCart()">Thêm vào giỏ</button></div>
+          </article>
+          <article class="product-card">
+            <div class="product-image"><img src="https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?auto=format&fit=crop&w=800&q=85" alt="Đèn sàn trang trí EGA Luna" loading="lazy"><span class="sale-label">-10%</span></div>
+            <div class="product-info"><h3>Đèn sàn trang trí EGA Luna</h3><span class="price">1.790.000₫</span><span class="old-price">1.990.000₫</span><button class="add-button" onclick="addToCart()">Thêm vào giỏ</button></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <section class="footer-column"><h2>Giới thiệu công ty</h2><p>EGA Furniture mang đến những thiết kế nội thất hiện đại, tiện nghi và phù hợp với mọi không gian sống.</p><p>Showroom: 123 Nguyễn Trãi, Quận 1, TP. Hồ Chí Minh</p></section>
+        <section class="footer-column"><h2>Dịch vụ khách hàng</h2><a href="#footer">Hướng dẫn mua hàng</a><a href="#footer">Phương thức thanh toán</a><a href="#footer">Giao hàng & lắp đặt</a><a href="#footer">Câu hỏi thường gặp</a></section>
+        <section class="footer-column"><h2>Bảo hành & đổi trả</h2><a href="#footer">Chính sách bảo hành</a><a href="#footer">Chính sách đổi trả</a><a href="#footer">Chính sách bảo mật</a><a href="#footer">Điều khoản dịch vụ</a></section>
+        <section class="footer-column"><h2>Liên hệ / Mạng xã hội</h2><p>Hotline: 1900 1234</p><p>Email: hello@egafurniture.vn</p><div class="social-links"><a href="#footer" aria-label="Facebook">f</a><a href="#footer" aria-label="Instagram">◎</a><a href="#footer" aria-label="YouTube">▶</a></div></section>
+      </div>
+      <div class="copyright">© 2025 EGA Furniture. Nội thất cho ngôi nhà của bạn.</div>
+    </div>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    let cartCount = 0;
+    let toastTimer;
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+    }
+    function addToCart() {
+      cartCount += 1;
+      document.getElementById('cart-count').textContent = cartCount;
+      showToast('Đã thêm sản phẩm vào giỏ hàng!');
+    }
+  </script>
+</body>
+</html>
